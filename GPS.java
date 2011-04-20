@@ -67,20 +67,39 @@ public class GPS {
            }
            return ret; 
        }
+// 4/19 --- NEW NEW NEW NEW NEW NEW NEW NEW NEW-----------------------------------------------------
+// 4/19 --- NEW NEW NEW NEW NEW NEW NEW NEW NEW-----------------------------------------------------
+	   
 // Time Calculator
-	   public Time change() {
+	   public Timer time() {
 	   int count = 0; 
 	   for(;;) 
 	   { 
 		   try { 
 			   Thread.sleep(1000); 
 			   count ++; 
+			   return count;
 		   } catch (InterruptedException e) { 
 			   // Catch Block
 			   e.printStackTrace(); 
 		   } 
 	   }
 	   }
+	   
+// Change a Variable after X-amount of Time
+	   public Changer change() {
+		   while ( finish != loc) {
+			   // When 1 Second Passes
+			   if (count = 1) {
+				   // Turn Path into Wall after a Second, Need to Specify an X,Y Coordinate
+				   maze [x][y][0] = [x][y][2];
+			   }
+		   }
+	   }
+	   
+// 4/19 --- NEW NEW NEW NEW NEW NEW NEW NEW NEW-----------------------------------------------------
+// 4/19 --- NEW NEW NEW NEW NEW NEW NEW NEW NEW-----------------------------------------------------				   
+	   
 // Create new List of Neighbors, South, North, East, West
 // As as not out of bounds, add the neighbor
        public List neighbors(int xlimit, int ylimit) {
