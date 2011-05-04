@@ -89,18 +89,9 @@ public class GPS {
 */
  
 // Change a Variable after X-amount of Time
-	   public Changer change() {
-		   while ( finish != loc) {
-			   // When 1 Second Passes
-			   if (count = 1) {
-				   // Turn Path into Wall after a Second, Need to Specify an X,Y Coordinate
-				   maze [x][y][0] = [x][y][2];
-				   // This will increment the corresponding location of the history.
-				   history[x][y] = hisValue;
-				   hisValue++;
-			   }
-		   }
-	   }
+//	   public Changer change() {
+		   
+	   
 	  	   
 			   	   
 // Create new List of Neighbors, South, North, East, West
@@ -120,8 +111,8 @@ public class GPS {
        }
    }
 // ---------Split Code Here?----------------------------------------------
-   public static final int WALL = 2;
-   public static final int GOAL = 1;
+   public static final int[] WALL = {2,3};
+   public static final int[] GOAL = {1,3};
 
    // Maze [2] = Wall, [0] = Possible Path, [1] = Goal
    // Second Array Value is Speed Limit which directly influences the delay with how the agent moves.
@@ -173,6 +164,19 @@ public class GPS {
        beentried = new java.util.LinkedList();
        queue.add(start);
        finish = null;
+       int count = 0;
+       int hisValue;
+       
+       while ( finish != loc) {
+			   // When 1 Second Passes
+			   if (count == 1) {
+				   // Turn Path into Wall after a Second, Need to Specify an X,Y Coordinate
+				   maze[22][21][0] = maze[22][21][2];
+				   // This will increment the corresponding location of the history.
+				   history[22][21]++;
+				   break;
+			   }
+		   }
 /*	   
 	// Cases That Changes how long the Agent 'sleeps' depending on the MPH read from the Maze to mimic traffic / lack-of
 	//Possible Speed Limits again are:
@@ -192,7 +196,7 @@ public class GPS {
 // If not Goal add location to neighbors
        while(!(queue.size() == 0)) {
            loc = (Location)(queue.remove(0));
-           if (maze[loc.y][loc.x] == GOAL) {
+           if ((maze[loc.y][loc.x]) == GOAL) {
                finish = loc;
                break;
            }
