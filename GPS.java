@@ -161,7 +161,7 @@ public class GPS {
 	   
 	   /* This is a second array that simply holds a value in each cell corresponding to how many 
 	   times that cell has become blocked. */ 
-	   history = new int[23][27];
+	   int[][] history = new int[23][27];
 	   
        Location start, loc, newloc, finish;
        List neighbors;
