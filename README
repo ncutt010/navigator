@@ -1,1 +1,7 @@
-This is a README File
+This is a README File for GPS.java
+
+As of now the program is contained within a single java file. Simply compile and run the program as you would any other Java program.
+
+Currently, many of the values are static. This was for testing purposes to debug and demonstrate the system. Eventually these values will be dynamic. 
+
+The project currently will only output information to the terminal window as soon as it has successfully traversed the maze. As of now it only outputs that it has successfully completed the maze (or if it was unable to do so otherwise).
