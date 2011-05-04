@@ -86,10 +86,7 @@ public class GPS {
 	   }
 	   }
  
-/* This is a second array that simply holds a value in each cell corresponding to how many 
-   times that cell has become blocked. */ 
-
-public int history [23][27];
+*/
  
 // Change a Variable after X-amount of Time
 	   public Changer change() {
@@ -99,12 +96,12 @@ public int history [23][27];
 				   // Turn Path into Wall after a Second, Need to Specify an X,Y Coordinate
 				   maze [x][y][0] = [x][y][2];
 				   // This will increment the corresponding location of the history.
-				   history [x][y] = hisValue;
+				   history[x][y] = hisValue;
 				   hisValue++;
 			   }
 		   }
 	   }
-*/	  	   
+	  	   
 			   	   
 // Create new List of Neighbors, South, North, East, West
 // As as not out of bounds, add the neighbor
@@ -161,6 +158,11 @@ public int history [23][27];
    static int startY = 0;
 
    public static void main(String [] args) {
+	   
+	   /* This is a second array that simply holds a value in each cell corresponding to how many 
+	   times that cell has become blocked. */ 
+	   history = new int[23][27];
+	   
        Location start, loc, newloc, finish;
        List neighbors;
        List beentried;
@@ -206,9 +208,9 @@ public int history [23][27];
 //the queue then add to queue
                if (!(maze[newloc.y][newloc.x] == WALL) &&
                    !(beentried.contains(newloc)) &&
-                   !(queue.contains(newloc))) && 
+                   !(queue.contains(newloc)) && 
             	   // added check to history array. Current threshold is 3.
-            	   !(history[newloc.y][newloc.x] < 3)
+            	   !(history[newloc.y][newloc.x] < 3))
                    {
                        queue.add(newloc);
                    }
