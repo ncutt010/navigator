@@ -1,4 +1,4 @@
-// Mike, Kevin, Mark
+// Mike Northcutt, Kevin Coughlin, Mark Berberoglu
 // CSC 380 -- AI Project
 // GPS Program using Maze
 
@@ -17,6 +17,7 @@ public class GPS {
        
        void setPred(Location l) { pred = l; }
        Location getPred() { return pred; }
+       
 // Stops Program from Looping, since 'Object O' resides at Location x,y 
 // force program to move from current Location     
        public boolean equals(Object o) {
@@ -85,6 +86,11 @@ public class GPS {
 	   }
 	   }
  
+/* This is a second array that simply holds a value in each cell corresponding to how many 
+   times that cell has become blocked. */ 
+
+public int history [23][27];
+ 
 // Change a Variable after X-amount of Time
 	   public Changer change() {
 		   while ( finish != loc) {
@@ -92,6 +98,9 @@ public class GPS {
 			   if (count = 1) {
 				   // Turn Path into Wall after a Second, Need to Specify an X,Y Coordinate
 				   maze [x][y][0] = [x][y][2];
+				   // This will increment the corresponding location of the history.
+				   history [x][y] = hisValue;
+				   hisValue++;
 			   }
 		   }
 	   }
@@ -176,6 +185,7 @@ public class GPS {
 		}
 		System.out.println(MPH);
 */
+       
 // LinkedList Queue, while not empty, check if GOAL is neighbor, if so then print Location
 // If not Goal add location to neighbors
        while(!(queue.size() == 0)) {
@@ -196,7 +206,9 @@ public class GPS {
 //the queue then add to queue
                if (!(maze[newloc.y][newloc.x] == WALL) &&
                    !(beentried.contains(newloc)) &&
-                   !(queue.contains(newloc))) 
+                   !(queue.contains(newloc))) && 
+            	   // added check to history array. Current threshold is 3.
+            	   !(history[newloc.y][newloc.x] < 3)
                    {
                        queue.add(newloc);
                    }
