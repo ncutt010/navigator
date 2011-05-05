@@ -18,28 +18,28 @@ public class GPS {
        void setPred(Location l) { pred = l; }
        Location getPred() { return pred; }
        
-// Stops Program from Looping, since 'Object O' resides at Location x,y 
-// force program to move from current Location     
+// Stops Program from Looping, since 'Object O' resides at Location x,y
+// force program to move from current Location
        public boolean equals(Object o) {
            if (!(o instanceof Location)) return false;
-           if (((Location)o).x == x && 
+           if (((Location)o).x == x &&
                ((Location)o).y == y)
                return true;
-			   return false;
+return false;
        }
 
-// Print Location (x , y)       
+// Print Location (x , y)
        public String toString() {
            return " (" + x + "," + y + ")";
        }
-// Checking South, as long as not out of bounds, new location south = y+1       
+// Checking South, as long as not out of bounds, new location south = y+1
        public Location south(int ylimit) {
            Location ret = null;
            if (y < (ylimit - 1)) {
                ret = new Location(x, y+1);
                ret.pred = this;
            }
-           return ret; 
+           return ret;
        }
 // Checking North, as long as not out of bounds, new location north = y-1
        public Location north() {
@@ -48,52 +48,51 @@ public class GPS {
                ret = new Location(x, y-1);
                ret.pred = this;
            }
-           return ret; 
+           return ret;
        }
-// Checking West, as long as not out of bounds, new location west = x-1       
+// Checking West, as long as not out of bounds, new location west = x-1
        public Location west() {
            Location ret = null;
            if (x > 0) {
                ret = new Location(x-1, y);
                ret.pred = this;
            }
-           return ret; 
+           return ret;
        }
-// Checking East, as long as not out of bounds, new location east = x+1       
+// Checking East, as long as not out of bounds, new location east = x+1
        public Location east(int xlimit) {
            Location ret = null;
            if (x < (xlimit - 1)) {
                ret = new Location(x+1, y);
                ret.pred = this;
            }
-           return ret; 
+           return ret;
        }
 
-/*	   
+/*
 // Seconds Calculator to see how long Agent takes to reach Goal
-	   public Timer time() {
-	   int count = 0; 
-	   for(;;) 
-	   { 
-		   try { 
-			   Thread.sleep(1000); 
-			   count ++; 
-			   System.out.println(count);
-		   } catch (InterruptedException e) { 
-			   // Catch Block
-			   e.printStackTrace(); 
-		   } 
-	   }
-	   }
- 
+public Timer time() {
+int count = 0;
+for(;;)
+{
+try {
+Thread.sleep(1000);
+count ++;
+System.out.println(count);
+} catch (InterruptedException e) {
+// Catch Block
+e.printStackTrace();
+}
+}
+}
 */
  
 // Change a Variable after X-amount of Time
-//	   public Changer change() {
-		   
-	   
-	  	   
-			   	   
+// public Changer change() {
+
+
+
+
 // Create new List of Neighbors, South, North, East, West
 // As as not out of bounds, add the neighbor
        public List neighbors(int xlimit, int ylimit) {
@@ -117,43 +116,43 @@ public class GPS {
    // Maze [2] = Wall, [0] = Possible Path, [1] = Goal
    // Second Array Value is Speed Limit which directly influences the delay with how the agent moves.
    // Possible Speeds Are:
-   // 25, 30, 45, 50 
-   public static int maze[][][] = 
-	{
-		{ {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}},
-		{ {2,3}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
-		{ {0,3}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {2,3}},
-		{ {0,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}}
-	};
+   // 25, 30, 45, 50
+   public static int maze[][][] =
+{
+{ {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}},
+{ {2,3}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {0,30}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {0,50}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {0,45}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}, {2,3}, {2,3}, {0,25}, {2,3}},
+{ {0,3}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {0,75}, {2,3}},
+{ {0,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}, {2,3}}
+};
    
    static int startX = 0;
    static int startY = 0;
 
    public static void main(String [] args) {
-	   
-	   /* This is a second array that simply holds a value in each cell corresponding to how many 
-	   times that cell has become blocked. */ 
-	   int[][] history = new int[23][27];
-	   
+
+/* This is a second array that simply holds a value in each cell corresponding to how many
+times that cell has become blocked. */
+int[][] history = new int[27][23];
+
        Location start, loc, newloc, finish;
        List neighbors;
        List beentried;
@@ -166,36 +165,38 @@ public class GPS {
        finish = null;
        int count = 0;
        int hisValue;
-       
-       while ( finish != loc) {
-			   // When 1 Second Passes
-			   if (count == 1) {
-				   // Turn Path into Wall after a Second, Need to Specify an X,Y Coordinate
-				   maze[22][21][0] = maze[22][21][2];
-				   // This will increment the corresponding location of the history.
-				   history[22][21]++;
-				   break;
-			   }
-		   }
-/*	   
-	// Cases That Changes how long the Agent 'sleeps' depending on the MPH read from the Maze to mimic traffic / lack-of
-	//Possible Speed Limits again are:
-	//25, 30, 45, 50, 75
-		
-		switch (MPH) {
-		case 25: Thread.sleep(2000); break;
-		case 30: Thread.sleep(1600); break;
-		case 45: Thread.sleep(1250); break;
-		case 50: Thread.sleep(1000); break;
-		case 75: Thread.sleep(750); break;
-		}
-		System.out.println(MPH);
+
+	
+
+/*
+// Cases That Changes how long the Agent 'sleeps' depending on the MPH read from the Maze to mimic traffic / lack-of
+//Possible Speed Limits again are:
+//25, 30, 45, 50, 75
+switch (MPH) {
+case 25: Thread.sleep(2000); break;
+case 30: Thread.sleep(1600); break;
+case 45: Thread.sleep(1250); break;
+case 50: Thread.sleep(1000); break;
+case 75: Thread.sleep(750); break;
+}
+System.out.println(MPH);
 */
        
 // LinkedList Queue, while not empty, check if GOAL is neighbor, if so then print Location
 // If not Goal add location to neighbors
        while(!(queue.size() == 0)) {
            loc = (Location)(queue.remove(0));
+		   
+		   //Changes the Array to a wall
+			// When 1 Second Passes
+			count++;
+			if (count == 1) {
+			// Turn Path into Wall after a Second, Need to Specify an X,Y Coordinate
+			// maze[22][21][0] = maze[22][21][2];
+			// This will increment the corresponding location of the history.
+			history[22][21]++;
+			break;
+			}
            if ((maze[loc.y][loc.x]) == GOAL) {
                finish = loc;
                break;
@@ -204,7 +205,7 @@ public class GPS {
            else {
                beentried.add(loc);
            }
-//Neighbors LinkedList length of maze, iterator traverses LinkedList analyzing Locations           
+//Neighbors LinkedList length of maze, iterator traverses LinkedList analyzing Locations
            neighbors = loc.neighbors(maze[0].length, maze.length);
            for(iter = neighbors.iterator(); iter.hasNext(); ) {
                newloc = (Location)(iter.next());
@@ -212,18 +213,18 @@ public class GPS {
 //the queue then add to queue
                if (!(maze[newloc.y][newloc.x] == WALL) &&
                    !(beentried.contains(newloc)) &&
-                   !(queue.contains(newloc)) && 
-            	   // added check to history array. Current threshold is 3.
-            	   !(history[newloc.y][newloc.x] < 3))
+                   !(queue.contains(newloc)) &&
+             // added check to history array. Current threshold is 3.
+             !(history[newloc.y][newloc.x] < 3))
                    {
                        queue.add(newloc);
                    }
            }
        }
-// Check if No Solution       
+// Check if No Solution
        if (finish == null) {
            System.out.println("There is no way to the Goal!");
-       } 
+       }
        
        else {
            Stack stack = new Stack();
@@ -232,12 +233,29 @@ public class GPS {
            }
 // Starting Point
            System.out.print("Agent Starting At: ");
-           
+           int previousX = 0;
+		   int previousY = 0;
+		   boolean firstTime = true;
            while(!stack.empty()) {
                loc = (Location)(stack.pop());
                System.out.println(loc.toString());
-               if (!stack.empty()) 
+			   
+               if (!stack.empty()){
+					if (firstTime != true){ //if its the first time there were be no previousX or previousY
+					   if (loc.x > previousX)
+							System.out.println("Go East Once on");
+						else if (loc.y > previousY)
+							System.out.println ("Go North Once");
+						else if (loc.x <previousX)
+							System.out.println("Go West Once" );
+						else if (loc.y <previousY)
+							System.out.println("Go South Once");
+						firstTime = false;
+					}
+					previousX = loc.x;
+					previousY = loc.y;
                    System.out.print("Next Location:");
+				}
            }
 // Goal Reached
            System.out.println("End Point Reached!");
